@@ -1,26 +1,38 @@
-#  settings for smsreportcard project.
+# Django settings for verifyProject project.
+import south
 import os
 import dj_database_url
-import south
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 ADMINS = (
-    ('admin', 'admin@example.com'),
+    # ('Your Name', 'your_email@example.com'),
 )
+
+GEOS_LIBRARY_PATH = ''
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': 
-        dj_database_url.config(default="sqlite:/reportcard.db")
+        dj_database_url.config(default="sqlite:/SMSrc_dev.db")
         
 }
+
+
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
+# On Unix systems, a value of None will cause Django to use the same
+# timezone as the operating system.
+# If running in a Windows environment this must be set to the same as your
+# system time zone.
 TIME_ZONE = 'Africa/Accra'
 
 # Language code for this installation. All choices can be found here:
@@ -53,7 +65,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/static/'
+STATIC_ROOT = 'static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -61,7 +73,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-	os.path.join(SITE_ROOT,'assets'),
+    os.path.join(SITE_ROOT,'assets'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -70,7 +82,6 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-	os.path.join(SITE_ROOT,'assets'),
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
@@ -102,12 +113,19 @@ ROOT_URLCONF = 'smsreportcard.urls'
 WSGI_APPLICATION = 'smsreportcard.wsgi.application'
 
 TEMPLATE_DIRS = (
-	os.path.join(SITE_ROOT,'templates'),
+    os.path.join(SITE_ROOT,'templates'),
+
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.i18n",
+    'django.contrib.messages.context_processors.messages',
+)
+GRAPPELLI_INDEX_DASHBOARD = 'compassa_reg.dashboard.CustomIndexDashboard'
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,11 +133,22 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
+	'django.contrib.markup',
+    
     'django.contrib.admin',
+    #'south',
+	'registration', 
+	'reg',
+
+    # Uncomment the next line to enable the admin:
+    # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+SMS_HANDLERS = (
+        #'dj_simple_sms.sample_sms_handler',
+        #s'verify.views.sms_search',
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

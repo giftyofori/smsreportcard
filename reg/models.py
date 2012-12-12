@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
-from djnago.contrib.auth.models import User
+
+from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 class UserProfile(models.Model):
 	picture = models.ImageField("Profile Pictue" , upload_to ="data/pro_images/", blank = True , null = True)
