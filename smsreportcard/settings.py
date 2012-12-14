@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     #'south',
 	'registration', 
 	'reg',
+	'simple_report',
 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
