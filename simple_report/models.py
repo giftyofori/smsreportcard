@@ -32,7 +32,7 @@ class Subject(models.Model):
 	
 	
 	
-	s = models.CharField(max_length = 20)
+	subject = models.CharField(max_length = 20)
 	grade = models.CharField(max_length = 1 , choices = GRADE ,default = GRADE[0][0])
 	report = models.ForeignKey(Report)
 	

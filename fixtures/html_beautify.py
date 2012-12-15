@@ -61,5 +61,5 @@ asdf
 </body>
 </html>
 """
-page = BeautifulSoup(html_doc)
-page.pretify()
+page = BeautifulSoup(html)
+print page.prettify()

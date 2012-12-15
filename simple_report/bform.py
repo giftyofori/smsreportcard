@@ -9,6 +9,7 @@ class ReportForm(ModelForm):
 		
 class SubjectForm(forms.Form):
 	subject = forms.CharField(max_length = 25 )
+	grade = forms.CharField(max_length = 1)
 	
 	def __init__(self , report = None , *args , **kwargs):
 		self.report = report
@@ -16,7 +17,9 @@ class SubjectForm(forms.Form):
 		
 	def save(self):
 		subject = models.Subject(report = self.report , subject = self.clean_data['subject'])
+		grade = models.Subject(report = self.report , subject = self.clean_data['grade'])
 		subject.put()
+		grade.put()
 
 
 
