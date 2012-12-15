@@ -1,6 +1,21 @@
 from django import forms
 from django.forms import ModelForm
 from models import *
+from django.forms.fields import MultipleChoiceField ,ChoiceField
+from django.forms.widgets import RadioSelect, CheckboxSelectMultiple , Select
+
+
+SUBJECTS = (("ENGLISH" ,"ENGLISH"),
+				("CORE MATHS", "CORE MATHS"),
+				("SOCIAL " , "SOCIAL "),
+				("E-MATHS", "E-MATHS")
+)
+
+GRADE = (("A", "A"),("B" , "B"),("C", "C"),
+			("D" , "D"),
+			("E" , "E"),
+			("F" , "F"),
+)
 
 
 class ReportForm(ModelForm):
@@ -8,8 +23,8 @@ class ReportForm(ModelForm):
 		model = Report
 		
 class SubjectForm(forms.Form):
-	subject = forms.CharField(max_length = 25 )
-	grade = forms.CharField(max_length = 1)
+	subject = forms.ChoiceField(widget=Select,choices=SUBJECTS )
+	grade = forms.ChoiceField( widget = Select, choices = GRADE )
 	
 	def __init__(self , report = None , *args , **kwargs):
 		self.report = report
