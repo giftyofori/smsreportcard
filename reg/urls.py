@@ -5,5 +5,6 @@ from django.conf.urls.defaults import *
 
 
 urlpatterns = patterns('reg.views',
+	url(r'^home/', 'main',),
 	url(r"^profile/(\d+)/$", "profile"),
 )

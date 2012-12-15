@@ -12,6 +12,12 @@ class Report(models.Model):
 	
 	def __unicode(self):
 		return self.name
+		
+	def get_absolute_url(self):
+		return '/report/%s/' % self.id
+		
+		
+
 
 class Subject(models.Model):
 	
@@ -26,9 +32,9 @@ class Subject(models.Model):
 	
 	
 	
-	title = models.CharField(max_length = 20)
+	s = models.CharField(max_length = 20)
 	grade = models.CharField(max_length = 1 , choices = GRADE ,default = GRADE[0][0])
-	sudject = models.ForeignKey(Report)
+	report = models.ForeignKey(Report)
 	
 	def __unicode__(self):
 		 return self.title
