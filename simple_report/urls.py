@@ -4,8 +4,9 @@ from views import *
 
 
 urlpatterns = patterns('simple_report.views',
-    (r'^$', 'index'),
-    (r'^create/$', 'add_report'), 
+    url(r'^$', 'recent'),
+    url(r'^create/$', 'add_report'), 
+	url(r'^detail/(\d+)/$' , 'detail')
     #(r'^poll/(?P<report_key>[^\.^/]+)/$', 'report_detail'),
     #(r'^poll/(?P<report_key>[^\.^/]+)/results/$', 'report_results'),	
 )

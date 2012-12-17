@@ -1,0 +1,17 @@
+{% extends 'simple_report/base.html' %}
+
+{% block title %}
+Recents
+{% endblock %}
+
+{% block contents %}
+<h2>Recents </h2>
+
+{% for report in reports %}
+<div class="poll">
+<a href="/detail/{{report.id}}/">{{report.name}}</a>
+<br>
+Cource {{report.course}}
+</div>
+{% endfor %}
+{% endblock %}

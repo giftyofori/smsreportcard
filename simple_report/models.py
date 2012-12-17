@@ -9,17 +9,22 @@ class Report(models.Model):
 
 	name = models.CharField("Student Name",max_length=50)
 	course = models.CharField( "Student Cource",choices = COURSE , max_length = 20 , default = COURSE[0][0])
+	phone = models.IntegerField("Phone Number" , max_length = 10 , default = "0243637783")
 	
 	def __unicode(self):
 		return self.name
 		
 	def get_absolute_url(self):
-		return '/report/%s/' % self.id
+		return 'sr/detail/%s/' % self.id
 		
-		
+#print Report.objects.get(course = "BUSINESS")	
 
 
 class Subject(models.Model):
+
+	def select_subject():
+		
+		pass
 	
 	GRADE = (
 				("A","Grade A"),
@@ -37,12 +42,19 @@ class Subject(models.Model):
 	report = models.ForeignKey(Report)
 	
 	def __unicode__(self):
-		 return self.title
+		 return self.subject
 		 
 	def save(self):
 		self.title = "maths"
 		super(Subject , self).save()
 	 
+# model created to auto fill the subject column when filling a report	 
+class Subjects(models.Model):
+	title = models.CharField(max_length = 30)
+	
+	
+	def __unicode__(self):
+		return self.title
 
 '''	
 	def create(self):
@@ -61,13 +73,16 @@ class ReportAdmin(admin.ModelAdmin):
 	
 class SubjectAdmin(admin.ModelAdmin):
 	extra = 8
-		
+
+# admin interface for class Stubjects	
+class SubjectsAdmin(admin.ModelAdmin):
+	list_display = ["title"]
 
 
-
-
+# registering models to the admin site to displayed and edited
 admin.site.register(Report , ReportAdmin)		
 admin.site.register(Subject , SubjectAdmin)		
+admin.site.register(Subjects , SubjectsAdmin)		
 		 
 		 
 

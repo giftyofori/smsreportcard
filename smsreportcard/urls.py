@@ -12,5 +12,6 @@ urlpatterns = patterns('',
 	url(r'^accounts/', include('registration.urls')),
 	url(r'^reg/', include('reg.urls')),
 	url(r'^sr/', include('simple_report.urls')),
+	url(r'^detail/(\d+)/$' , 'simple_report.views.detail')
 	
 )

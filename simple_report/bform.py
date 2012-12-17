@@ -3,6 +3,25 @@ from django.forms import ModelForm
 from models import *
 from django.forms.fields import MultipleChoiceField ,ChoiceField
 from django.forms.widgets import RadioSelect, CheckboxSelectMultiple , Select
+from models import Subjects
+
+# auto fill subjects by using subjects saved in the database
+subjects = Subjects.objects.all()
+print subjects
+
+for i in subjects:
+	print i
+
+
+'''
+print subjects
+print tuple(subjects)
+
+for i in subjects:
+	for  j in  range(len(subjects)):
+		print j
+'''		
+
 
 
 SUBJECTS = (("ENGLISH" ,"ENGLISH"),
@@ -23,7 +42,7 @@ class ReportForm(ModelForm):
 		model = Report
 		
 class SubjectForm(forms.Form):
-	subject = forms.ChoiceField(widget=Select,choices=SUBJECTS )
+	subject = forms.ChoiceField(widget=Select,choices= SUBJECTS )
 	grade = forms.ChoiceField( widget = Select, choices = GRADE )
 	
 	def __init__(self , report = None , *args , **kwargs):
