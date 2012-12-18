@@ -1,0 +1,13 @@
+- model:simple_report.report
+  pk:2
+  fields:
+	name: John
+	course: SCIENCE
+	phone: 0242688744
+- model:simple_report.report
+  pk:3
+  fields:
+	name: Yaw Akua
+	course: SCIENCE
+	phone: 0242688755
+	

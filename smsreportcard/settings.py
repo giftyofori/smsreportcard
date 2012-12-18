@@ -136,10 +136,11 @@ INSTALLED_APPS = (
 	'django.contrib.markup',
     
     'django.contrib.admin',
-    #'south',
+    'south',
 	'registration', 
 	'reg',
 	'simple_report',
+	'dj_simple_sms',
 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -147,7 +148,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 SMS_HANDLERS = (
-        #'dj_simple_sms.sample_sms_handler',
+        'dj_simple_sms.sample_sms_handler',
         #s'verify.views.sms_search',
     )
 

@@ -10,6 +10,7 @@ Recents
 {% for report in reports %}
 <div class="poll">
 <a href="/detail/{{report.id}}/">{{report.name}}</a>
+<a href="/sr/send/{{report.id}}/">send</a>
 <br>
 Cource {{report.course}}
 </div>

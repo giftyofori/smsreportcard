@@ -1,0 +1,93 @@
+[ 
+	{
+		"model": "simple_report.report",
+		"pk": 2,
+		"fields":{
+			"name": "John",
+			"course": "SCIENCE",
+			"phone": "0242688744"
+		}
+	},
+	{
+		"model": "simple_report.report",
+		"pk": 3,
+		"fields":{
+			"name": "Akua Ama",
+			"course": "SCIENCE",
+			"phone": "0242688755"
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 1,
+		"fields":{
+			"subject": "Core Maths",
+			"grade": "A",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 2,
+		"fields":{
+			"subject": "English",
+			"grade": "B",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 3,
+		"fields":{
+			"subject": "Social Stidies",
+			"grade": "C",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 4,
+		"fields":{
+			"subject": "Inter Science",
+			"grade": "B",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 5,
+		"fields":{
+			"subject": "Biology",
+			"grade": "B",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 6,
+		"fields":{
+			"subject": "chemsity",
+			"grade": "B",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 7,
+		"fields":{
+			"subject": "Elective Maths",
+			"grade": "A",
+			"report": 3
+		}
+	},
+	{
+		"model": "simple_report.subject",
+		"pk": 8,
+		"fields":{
+			"subject": "Physics",
+			"grade": "C",
+			"report": 3
+		}
+	}
+
+]	

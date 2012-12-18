@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.defaults import *
+import dj_simple_sms
 
 from django.contrib import admin
 admin.autodiscover()
@@ -12,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^accounts/', include('registration.urls')),
 	url(r'^reg/', include('reg.urls')),
 	url(r'^sr/', include('simple_report.urls')),
-	url(r'^detail/(\d+)/$' , 'simple_report.views.detail')
+	url(r'^detail/(\d+)/$' , 'simple_report.views.detail'),
+	url(r'^sms/', include(dj_simple_sms.urls))
 	
 )

@@ -4,6 +4,7 @@ import bform
 from form import ReportForm
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
+from dj_simple_sms.models import SMS
 
 
 
@@ -51,3 +52,19 @@ def add_report(request):
 	
 	return render_to_response('simple_report/add_report.html' , dict(reportform = reportform , subjectforms = subjectforms))
 
+	
+def send_report(request , pk):
+	message_one = ""
+	message_two = ""
+	report = Report.objects.filter(id = pk)
+	subjects = Subject.objects.filter(report = pk)
+	#phone = Report.objects.get(phone)
+	for item in report:
+		message_one = message_one + "Name: " + item.name + " Course " + item.course
+	for subject in subjects:
+		message_two = message_two +" " + subject.subject +":>>" + subject.grade + " " 
+	
+	response = SMS(to_number = (i.phone for i in report) , from_number = "SHS" , body = message_one + message_two)
+	response.send()
+	
+	return render_to_response('simple_report/sent.html', dict(message = message_one + message_two))

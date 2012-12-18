@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 import datetime
 from south.db import db
 from south.v2 import SchemaMigration
@@ -8,7 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'Report'
         db.create_table('simple_report_report', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -34,8 +33,8 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('simple_report', ['Subjects'])
 
+
     def backwards(self, orm):
-        
         # Deleting model 'Report'
         db.delete_table('simple_report_report')
 
@@ -44,6 +43,7 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Subjects'
         db.delete_table('simple_report_subjects')
+
 
     models = {
         'simple_report.report': {
