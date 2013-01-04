@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib import admin
 
 
-
 class Report(models.Model):
 	COURSE = (("BUSINESS","BUSINESS"),("SCIENCE","SCIENCE"))
 
@@ -11,7 +10,7 @@ class Report(models.Model):
 	course = models.CharField( "Student Cource",choices = COURSE , max_length = 20 , default = COURSE[0][0])
 	phone = models.IntegerField("Phone Number" , max_length = 10 , default = "0243637783")
 	
-	def __unicode(self):
+	def __unicode__(self):
 		return self.name
 		
 	def get_absolute_url(self):
