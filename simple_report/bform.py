@@ -6,11 +6,22 @@ from django.forms.widgets import RadioSelect, CheckboxSelectMultiple , Select
 from models import Subjects
 
 # auto fill subjects by using subjects saved in the database
-subjects = Subjects.objects.all()
-print subjects
-
-for i in subjects:
-	print i
+def auto_fill_subject():
+	subject_tuple = ''
+	subjects = Subjects.objects.all()
+	for subject in subjects:
+		subject_tuple = subject_tuple + "( '%s','%s' )," %(subject , subject )
+	print subject_tuple[-1]
+		
+	final_subject_tuple = "( %s )" % subject_tuple
+	print final_subject_tuple
+	return  final_subject_tuple
+		
+		
+		
+		
+auto_fill_subject()
+		
 
 
 '''
@@ -27,7 +38,7 @@ for i in subjects:
 SUBJECTS = (("ENGLISH" ,"ENGLISH"),
 				("CORE MATHS", "CORE MATHS"),
 				("SOCIAL " , "SOCIAL "),
-				("E-MATHS", "E-MATHS")
+				("E-MATHS", "E-MATHS"),
 )
 
 GRADE = (("A", "A"),("B" , "B"),("C", "C"),

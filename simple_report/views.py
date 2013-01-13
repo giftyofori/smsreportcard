@@ -64,7 +64,7 @@ def send_report(request , pk):
 	for subject in subjects:
 		message_two = message_two +" " + subject.subject +":>>" + subject.grade + " " 
 	
-	response = SMS(to_number = (i.phone for i in report) , from_number = "SHS" , body = message_one + message_two)
+	response = SMS(to_number = "" , from_number = "SHS" , body = message_one + message_two)
 	response.send()
 	
 	return render_to_response('simple_report/sent.html', dict(message = message_one + message_two))
