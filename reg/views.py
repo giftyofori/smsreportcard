@@ -8,6 +8,8 @@ from models import *
 from reg import form
 import datetime
 from django.core.context_processors import csrf
+from django.template import RequestContext
+from reg.models import LoggedUser
 
 def main(request):
 	return render_to_response("home/home.html", dict( clock = datetime.datetime.now(), user=request.user))
@@ -41,4 +43,10 @@ def add_csrf(request ,  **kwargs):
 	d  = dict(user = request.user , **kwargs)
 	d.update(csrf(request))
 	return d
+
+def logged(request):
+	logged_users = LoggedUser.objects.all().order_by('username')
+	return render_to_response('reg/logged.html', dict(logged_users = logged_users  ), context_instance = RequestContext(request))
+
+
 

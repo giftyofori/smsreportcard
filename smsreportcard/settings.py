@@ -136,7 +136,7 @@ INSTALLED_APPS = (
 	'django.contrib.markup',
     
     'django.contrib.admin',
-    'south',
+    #'south',
 	'registration', 
 	'reg',
 	'simple_report',
