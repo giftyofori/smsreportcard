@@ -141,6 +141,7 @@ INSTALLED_APPS = (
 	'reg',
 	'simple_report',
 	'dj_simple_sms',
+        '_reportcard',
 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
