@@ -58,6 +58,8 @@ class Student_Info(models.Model):
 
 	class Meta:
 		db_table = 'student_info'
+		verbose_name = "Student Infomation"
+		verbose_name_plural = "Student Infomations"
 
 
 class Subject(models.Model):
@@ -79,6 +81,8 @@ class Core_subjects(models.Model):
 
 	class Meta:
 		db_table = "core subjects"
+		verbose_name = "Core Subject"
+		permissions = (("Add", "Add Core Subject"),)
 '''
 # auto save core subjects
 core_subjects = ['English', 'Integrated Science', 'Core Mathematics' , 'Social Studies' ]
@@ -104,13 +108,15 @@ class Elective_subjects(models.Model):
 
 	class Meta:
 		db_table = "elective subjects"
+		verbose_name = "Elective Subject"
+		verbose_name_plural = "Elective Subjects"
 
 class Report(models.Model):
 	student_name = models.CharField(max_length = 100)
 	course = models.CharField(max_length = 50)
 	teacher = models.CharField(max_length = 50, default = "logged in user" )
 	remarks = models.TextField(max_length = 230 , default = "Good performance")
-	student = models.ForeignKey(Student)
+	student = models.ForeignKey(Student , null = True , blank = True)
 
 	def _unicode__(self):
 		return self.id
@@ -152,13 +158,22 @@ class Report_content(models.Model):
 
 	class Meta:
 		db_table = "report content"
-			
-
+		verbose_name = "Report Content"
+"""
+Adminstaration Customization
+"""
+class ReportcontentInline(admin.TabularInline):
+	model= Report_content
+	extra = 8		
+class ReportAdmin(admin.ModelAdmin):
+	inlines = [ReportcontentInline]
+	list_display = ['student_name' , 'course' , 'teacher']
+	
 admin.site.register(Student)
-admin.site.register(Student_Info)
+#admin.site.register(Student_Info)
 admin.site.register(Teacher)
 #admin.site.register(Teaches)
-admin.site.register(Report)
-admin.site.register(Report_content)
+admin.site.register(Report, ReportAdmin)
+#admin.site.register(Report_content)
 admin.site.register(Elective_subjects)
 admin.site.register(Core_subjects)
