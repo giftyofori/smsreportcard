@@ -1,0 +1,30 @@
+<html>
+<head>
+
+<style type="text/css">
+body{
+background-color:#C2C2A3;
+
+}
+span{
+margin-left:45px;
+}
+</style>
+
+</head>
+<body>
+<form action=//  method= post>
+{{rform.as_p}}
+<tr><th></th><td><span>Subject<span></td><td><span>Examination Marks<span></td><td><spanstyle ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentage</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
+{% for form in rcform %}
+
+{{form.as_table}}
+<br>
+
+{% endfor %}
+{{remark.as_p}}
+<input type = "submit" name = "add"  value = "add report">
+
+</form>
+</body>
+<html>

@@ -3,8 +3,8 @@ from django.conf.urls.defaults import *
 from views import *
 
 
-urlpatterns = patterns('reportcard.views',
-	url()
+urlpatterns = patterns('_reportcard.views',
+	url(r'add/' , 'display_forms'),
 
 	
     #(r'^poll/(?P<report_key>[^\.^/]+)/$', 'report_detail'),
