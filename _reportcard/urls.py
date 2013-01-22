@@ -5,8 +5,10 @@ from views import *
 
 urlpatterns = patterns('_reportcard.views',
 	url(r'add/' , 'display_forms'),
+	url(r'add_report', 'add_report'),
 
 	
     #(r'^poll/(?P<report_key>[^\.^/]+)/$', 'report_detail'),
-    #(r'^poll/(?P<report_key>[^\.^/]+)/results/$', 'report_results'),	
+    #(r'^poll/(?P<report_key>[^\.^/]+)/results/$', 'report_results'),
+		
 )

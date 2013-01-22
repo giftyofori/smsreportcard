@@ -3,7 +3,7 @@
 
 <style type="text/css">
 body{
-background-color:#C2C2A3;
+background-color:#9999A9;
 margin-left:3cm;
 margin-right:10px;
 
@@ -16,20 +16,39 @@ margin-left:15cm;
 margin-right:;
 
 }
+.padding
+{
+padding-top:15px;
+padding-bottom:15px;
+padding-right:25px;
+padding-left:;
+}
+.remarkstyle{
+font-family:Arial,sans-serif;
+font-variant: small-caps;
+}
 </style>
 
 </head>
 <body>
-<form action=//  method= post>
-{% for field in  rform %}
-<div class ="fielfWrapper">
-	{{ field.errors}}
-	{{field.label_tag}}: {{field}} : {{ field.value }} : {{ field.html_name }} 
+<form action=/report/add_report  method= post>
 
-</div>
-{% endfor %}
 <hr>
 <p class="p">{{rform.date.label_tag}}<span> {{rform.date}}</span></p>
+<table>
+<tr>
+	<td class="padding">{{rform.name.label_tag}}</td>
+	<td>{{rform.name}}</td>
+</tr>
+<tr>
+	<td class="padding">{{rform.form.label_tag}} </td>
+ 	<td>{{rform.form}} </td>
+</tr>
+<tr>
+	<td class="padding">{{rform.teacher.label_tag}}</td> 
+	<td>{{rform.teacher}} </td>
+</tr>
+</table>
 <hr>
 <tr><th></th><td><span>Subject<span></td><td><span>Examination Marks<span></td><td><spanstyle ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentage</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
 {% for form in rcform %}
@@ -41,6 +60,12 @@ margin-right:;
 <div>
 <p>{{remark.remark.label_tag}}s</p><p>{{remark.remark}}</p>
 </div>
+<hr>
+
+{%for form in formset %}
+<p> {{form.subject}} {{form.exam_mark}} {{form.text_mark}} </p>
+{%endfor%}
+
 <input type = "submit" name = "add"  value = "add report">
 
 </form>
