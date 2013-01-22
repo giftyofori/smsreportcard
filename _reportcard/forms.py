@@ -18,4 +18,4 @@ class Report_contentForm(forms.Form):
 	grade = forms.CharField(max_length = 1 , required = False , label = "")
 	
 class RemarkForm(forms.Form):
-	remark = forms.CharField(max_length = 300, widget=forms.Textarea)
+	remark = forms.CharField(max_length = 300, widget=forms.Textarea ,initial = "Good Work More Room for Improvement")
