@@ -1,9 +1,14 @@
 from django.shortcuts import render_to_response
 from django.forms.formsets import formset_factory
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse , HttpResponseRedirect
 from forms import *
+from models import *
 
+def report_detail(request , pk):
+	report = Report.objects.filter(id = pk)
+	report_content = Report_content.objects.filter(report = pk)
+	return render_to_response('_reportcard/report_detail.html', dict(reports = report , pk = pk , subjects = report_content ))
 
 def display_forms(request):
 	if request.method == 'GET':
@@ -15,27 +20,60 @@ def display_forms(request):
 		ReportFormSet = formset_factory(Report_contentForm ,extra=8)
 		formset = ReportFormSet()
 
-	return render_to_response('_reportcard/forms.html' ,dict(rform = reportform , rcform = report_contentforms , remark = remark ,formset = formset) )
+	return render_to_response('_reportcard/add_report.html' ,dict(rform = reportform , rcform = report_contentforms , remark = remark ,formset = formset) )
+
+
+def all_reports(request):
+	reports = Report.objects.all()
+	return HttpResponse(reports)
 
 @csrf_exempt
-def add-report(request):
-if request.method == 'GET':
-	reportform = ReportForm()
-	report_contentforms = []
-	for i in range(8):
-		report_contentforms.append(Report_contentForm(prefix = '%s'%i))
-if request.methos == "POST":
-	reportform = ReportForm()
-	if  reportform.is_valid():
-		report
-	
-	report_contentforms = []
-	for i in range(8):
-		report_contentforms.append(Report_contentForm(prefix = '%s'%i))
-	for forms in report_contentforms:
+def add_report(request):
+	if request.method == 'GET':
+		reportform = ReportForm()
+		report_contentforms = []
+		for i in range(8):
+			report_contentforms.append(Report_contentForm(prefix = 'f%s'%i))
+	if request.method == 'POST':
+		reportform = ReportForm(request.POST)
+		report_contentforms = Report_contentForm()
+		if reportform.is_valid():
+			report = reportform.save()
+			print 'report object ' , report
+			report_contentforms = []
+			for i in range(8):
+				report_contentforms.append(Report_contentForm(report = report , prefix = 'f%s'%i , data = request.POST ))
+
+			for form in report_contentforms:
+				if form.is_valid():
+					form.save()
+			
+			return HttpResponseRedirect(report.get_absolute_url())
+	return render_to_response('_reportcard/add_report.html' , dict(rform = reportform , rcform = report_contentforms ))
+			
+		
+		
+		
+
+"""
+
+def add_report(request):
 
 	
+	reportform = ReportForm()
+	if  reportform.is_valid():
+		reportform.save()
 	
+	report_contentforms = []
+	for i in range(8):
+		report_contentforms.append(Report_contentForm(prefix = '%s'%i))
+	for form in report_contentforms:
+		if form.is_valid():
+			form.save()
+	return render_to_response('_reportcard/added.html', dict())
+
+	
+
 	
 	
 		
@@ -49,3 +87,4 @@ def add_report2(request):
 		
 		print name; print date ; print form; print teacher
 	return HttpResponse('check command line')
+"""

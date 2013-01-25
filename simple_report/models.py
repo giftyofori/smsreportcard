@@ -14,7 +14,7 @@ class Report(models.Model):
 		return self.name
 		
 	def get_absolute_url(self):
-		return 'sr/detail/%s/' % self.id
+		return '/detail/%s/' % self.id
 		
 #print Report.objects.get(course = "BUSINESS")	
 
@@ -83,7 +83,7 @@ admin.site.register(Report , ReportAdmin)
 admin.site.register(Subject , SubjectAdmin)		
 admin.site.register(Subjects , SubjectsAdmin)		
 		 
-		
+"""
 from django.db import models
 from django.contrib import admin
 
@@ -99,7 +99,7 @@ class Report(models.Model):
 	def __unicode__(self):
 		return self.name
 		
-	def get_absolute_url(self):
+	def get_absolute(self):
 		return 'sr/detail/%s/' % self.id
 		
 #print Report.objects.get(course = "BUSINESS")	
@@ -168,3 +168,4 @@ class SubjectsAdmin(admin.ModelAdmin):
 #admin.site.register(Report , ReportAdmin)		
 #admin.site.register(Subject , SubjectAdmin)		
 #admin.site.register(Subjects , SubjectsAdmin)		
+"""

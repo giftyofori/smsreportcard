@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from models import *
 from django.forms.fields import MultipleChoiceField ,ChoiceField
 from django.forms.widgets import RadioSelect, CheckboxSelectMultiple , Select
-from models import Subjects
+from models import Subject
 
 # auto fill subjects by using subjects saved in the database
 def auto_fill_subject():
@@ -52,20 +52,28 @@ GRADE = (("A", "A"),("B" , "B"),("C", "C"),
 class ReportForm(ModelForm):
 	class Meta:
 		model = Report
+"""
+class SubjectForm(forms.Form):
+	subject = forms.ChoiceField(widget=Select,choices= SUBJECTS )
+	grade = forms.ChoiceField( widget = Select, choices = GRADE )
+
+"""
+
+##original bform
 		
 class SubjectForm(forms.Form):
 	subject = forms.ChoiceField(widget=Select,choices= SUBJECTS )
 	grade = forms.ChoiceField( widget = Select, choices = GRADE )
-	
+
 	def __init__(self , report = None , *args , **kwargs):
 		self.report = report
 		super(SubjectForm , self).__init__(*args, **kwargs)
 		
 	def save(self):
-		subject = models.Subject(report = self.report , subject = self.clean_data['subject'])
-		grade = models.Subject(report = self.report , subject = self.clean_data['grade'])
-		subject.put()
-		grade.put()
+		subject = Subject(report = self.report , subject = self.cleaned_data['subject'] , grade= self.cleaned_data['grade'])
+		subject.save()
+		
+	
 
 
 
@@ -168,3 +176,4 @@ class ChoiceForm(forms.Form):
     def save(self):
         choice = models.Choice(poll = self.poll,choice = self.clean_data['choice'])	
         chocie.put()
+

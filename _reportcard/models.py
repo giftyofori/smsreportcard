@@ -77,7 +77,7 @@ class Core_subjects(models.Model):
 	subject_name = models.CharField(max_length = 40)
 
 	def __unicode__ (self):
-		return self.subject
+		return self.subject_name
 
 	class Meta:
 		db_table = "core subjects"
@@ -94,7 +94,7 @@ class Course(models.Model):
 	number_student = models.IntegerField("Students Offering Course" ,max_length = 4)
 	
 	def __unicode__(self):
-		return self.subject_name	
+		return self.course_name	
 
 	class Meta:
 		db_table = "course"
@@ -112,46 +112,41 @@ class Elective_subjects(models.Model):
 		verbose_name_plural = "Elective Subjects"
 
 class Report(models.Model):
+	FORMS = ((1,"One") ,(2,"Two") , (3 , "Three"))
 	student_name = models.CharField(max_length = 100)
 	course = models.CharField(max_length = 50)
+	form = models.IntegerField(max_length = 2, choices = FORMS)
 	teacher = models.CharField(max_length = 50, default = "logged in user" )
-	remarks = models.TextField(max_length = 230 , default = "Good performance")
-	student = models.ForeignKey(Student , null = True , blank = True)
+	remark = models.TextField(max_length = 300)
 
-	def _unicode__(self):
-		return self.id
+	def __unicode__(self):
+		return self.student_name
+	
+	def get_absolute_url(self):
+		return '/report/detail/%s/' % self.id
 
 	class Meta:
 		db_table = "report"
 	
+def cal():
+	core = Core_subjects.objects.all()
+	dict1 = {}
+	for i in range(4):
+		dict1[str(core[i])] = str(core[i])
+	return dict1
+	
+def cal1():
+	core = Core_subjects.objects.all()
+	tuple = ((str(core[1]) ,str(core[1])),(str(core[2]) ,str(core[2])),)
+	return tuple
+
 class Report_content(models.Model):
-	report = models.ForeignKey(Report)
-	subject = models.CharField(max_length = 50)
+	report = models.ForeignKey(Report , null = True)
+	subject = models.CharField(max_length = 50 , choices = cal1(), default = "English")
 	exam_mark = models.IntegerField("Examination Mark", max_length = 3)
 	test_mark = models.IntegerField("Class Test Mark" , max_length = 3)
-	def cal_percentage():
-
-		total_mark = (0.7) + (0.3)
-		return total_mark
-	percentage = models.IntegerField(max_length = 3 , default = cal_percentage())
-	def cal_grade(percentage = 80.67):
-		percentage = int(round(percentage))
-		if percentage >= 80.00:
-			return 'A'
-		elif percentage in range(70, 80):
-			return 'B'
-		elif percentage in range(60 , 70):
-			return 'C'
-		elif percentage in range(50 , 60):
-			return 'D'
-		elif percentage in range(40 , 50):
-			return 'E'
-		elif percentage in range(0 , 40):
-			return 'F'
-		else:
-			return
-
-	grade = models.CharField(max_length = 1, default = cal_grade())
+	percentage = models.IntegerField(max_length = 3)
+	grade = models.CharField(max_length = 1)
 
 	def __unicode__(self):
 		return self.subject
@@ -159,6 +154,9 @@ class Report_content(models.Model):
 	class Meta:
 		db_table = "report content"
 		verbose_name = "Report Content"
+
+
+
 """
 Adminstaration Customization
 """
@@ -168,6 +166,14 @@ class ReportcontentInline(admin.TabularInline):
 class ReportAdmin(admin.ModelAdmin):
 	inlines = [ReportcontentInline]
 	list_display = ['student_name' , 'course' , 'teacher']
+
+class ESInline(admin.TabularInline):
+	model = Elective_subjects
+	extra = 4
+
+class CourseAdmin(admin.ModelAdmin):
+	inlines = [ESInline]
+	list_display = ['course_name' , 'number_student']
 	
 admin.site.register(Student)
 #admin.site.register(Student_Info)
@@ -177,3 +183,5 @@ admin.site.register(Report, ReportAdmin)
 #admin.site.register(Report_content)
 admin.site.register(Elective_subjects)
 admin.site.register(Core_subjects)
+admin.site.register(Course , CourseAdmin)
+admin.site.register(Subject)

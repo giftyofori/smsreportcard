@@ -1,0 +1,82 @@
+<html>
+<head>
+
+<style type="text/css">
+body{
+background-color:#9999A9;
+margin-left:3cm;
+margin-right:10px;
+
+}
+span{
+margin-left:45px;
+}
+.p{
+margin-left:15cm;
+margin-right:;
+
+}
+.padding
+{
+padding-top:15px;
+padding-bottom:15px;
+padding-right:25px;
+padding-left:;
+}
+.remarkstyle{
+font-family:Arial,sans-serif;
+font-variant: small-caps;
+}
+#id_student_name{
+background-color:red;
+width:10cm;
+}
+</style>
+
+</head>
+<body>
+<form action="." method= post>
+<hr>
+<p class="p">{{rform.date_created.label_tag}}<span> {{rform.date_created}}</span></p>
+<table>
+<tr>
+	<td class="padding">{{rform.student_name.label_tag}}</td>
+	<td>{{rform.student_name}}</td>
+</tr>
+<tr>
+	<td class="padding">{{rform.form.label_tag}} </td>
+ 	<td>{{rform.form}} </td>
+</tr>
+<tr>
+	<td class="padding">{{rform.course.label_tag}} </td>
+ 	<td>{{rform.course}} </td>
+</tr>
+<tr>
+	<td class="padding">{{rform.teacher.label_tag}}</td> 
+	<td>{{rform.teacher}} </td>
+</tr>
+</table>
+<hr>
+<tr><th></th><td><span>Subject<span></td><td><span>Examination Marks<span></td><td><spanstyle ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentage</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
+
+{% for form in rcform %}
+{{form.as_table}}
+{% endfor %}
+<hr>
+<p> {{rform.remark.label_tag}} <span> {{rform.remark}}
+
+<div>
+<p>{{remark.remark.label_tag}}s</p><p>{{remark.remark}}</p>
+</div>
+<hr>
+{% comment %}
+{%for form in formset %}
+<p> {{form.subject}} {{form.exam_mark}} {{form.text_mark}} </p>
+{%endfor%}
+{% endcomment %}
+
+<input type = "submit" name = "add"  value = "add report">
+
+</form>
+</body>
+<html>
