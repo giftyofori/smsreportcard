@@ -3,6 +3,7 @@ from django.forms import ModelForm
 import datetime
 from django.forms.widgets import Select
 from models import *
+from tweak import subjectstuple
 errormsg_text = {'required' :'Field is required'}
 errormsg_int = {'required': 'Field is Required' , 'invalid':'Invalid Entry' ,'max_value':'Maximum Value Exceeded' , 'min_value':'Minivalue Required'}
 

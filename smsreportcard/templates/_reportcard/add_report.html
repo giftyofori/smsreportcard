@@ -29,7 +29,7 @@
 </tr>
 </table>
 <hr>
-<tr><th></th><td><span>Subject<span></td><td><span>Examination Marks<span></td><td><spanstyle ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentage</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
+<tr><th></th><td><span>Subject<span></td><td><span>Examination Marks<span></td><td><span style ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentage</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
 
 {% for form in rcform %}
 
@@ -40,7 +40,7 @@
 <p> {{rform.remark.label_tag}} <span> {{rform.remark}}
 
 <div>
-<p>{{remark.remark.label_tag}}s<span>{{remark.remark}}</span></p>
+<p>{{remark.remark.label_tag}}s<span id="span">{{remark.remark}}</span></p>
 </div>
 <hr>
 {% comment %}
