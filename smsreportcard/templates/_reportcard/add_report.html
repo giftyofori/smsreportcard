@@ -1,40 +1,12 @@
-<html>
-<head>
+{% extends "_reportcard/base.html"%}
 
-<style type="text/css">
-body{
-background-color:#9999A9;
-margin-left:3cm;
-margin-right:10px;
+{% block extrastyle %}
 
-}
-span{
-margin-left:45px;
-}
-.p{
-margin-left:15cm;
-margin-right:;
 
-}
-.padding
-{
-padding-top:15px;
-padding-bottom:15px;
-padding-right:25px;
-padding-left:;
-}
-.remarkstyle{
-font-family:Arial,sans-serif;
-font-variant: small-caps;
-}
-#id_student_name{
-background-color:red;
-width:10cm;
-}
-</style>
+{% endblock %}
 
-</head>
-<body>
+
+{% block main %}
 <form action="." method= post>
 <hr>
 <p class="p">{{rform.date_created.label_tag}}<span> {{rform.date_created}}</span></p>
@@ -60,13 +32,15 @@ width:10cm;
 <tr><th></th><td><span>Subject<span></td><td><span>Examination Marks<span></td><td><spanstyle ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentage</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
 
 {% for form in rcform %}
-{{form.as_table}}
+
+{{form.subject}}{{form.exam_mark}}{{form.test_mark}}{{form.percentage}}{{form.grade}} 
+<br>
 {% endfor %}
 <hr>
 <p> {{rform.remark.label_tag}} <span> {{rform.remark}}
 
 <div>
-<p>{{remark.remark.label_tag}}s</p><p>{{remark.remark}}</p>
+<p>{{remark.remark.label_tag}}s<span>{{remark.remark}}</span></p>
 </div>
 <hr>
 {% comment %}
@@ -78,5 +52,4 @@ width:10cm;
 <input type = "submit" name = "add"  value = "add report">
 
 </form>
-</body>
-<html>
+{% endblock %}

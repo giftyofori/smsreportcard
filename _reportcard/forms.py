@@ -9,8 +9,8 @@ errormsg_int = {'required': 'Field is Required' , 'invalid':'Invalid Entry' ,'ma
 
 class ReportForm(ModelForm):
 	FORMS = ((1,"One") ,(2,"Two") , (3 , "Three"))
-	student_name = forms.CharField(max_length = 100,widget=forms.TextInput(attrs={'size':'50','class':'inputstyle'}))
-	#form = forms.ChoiceField(widget=forms.Select, choices=FORMS)
+	student_name = forms.CharField(max_length = 100,widget=forms.TextInput(attrs={'class':'inputstyle'}))
+	form = forms.ChoiceField(widget=forms.Select, choices=FORMS ,initial = "")
 	class Meta:
 		model = Report
 
@@ -38,11 +38,11 @@ class ReportForm(forms.Form):
 
 
 class Report_contentForm(forms.Form):
-	subject = forms.CharField(max_length = 50 ,label = "" ,required = False ,initial = "Marths")
-	exam_mark = forms.IntegerField(max_value =  200 ,label = "" , error_messages = errormsg_int ,required = False , initial =23)
-	test_mark = forms.IntegerField(max_value =  200 ,label = "" ,required = False , initial = 23)
-	percentage = forms.IntegerField(max_value = 100 , required = False , label = "",initial =100)
-	grade = forms.CharField(max_length = 1 , required = False , label = "" ,initial = "A")
+	subject = forms.CharField(max_length = 50 ,label = "" ,required = False ,initial = "Marths" , widget=forms.TextInput(attrs={'class':'subject'}))
+	exam_mark = forms.IntegerField(max_value =  200 ,label = "" , error_messages = errormsg_int ,required = False , initial =23,widget=forms.TextInput(attrs={'class':'intform' , 'id':'intform'}))
+	test_mark = forms.IntegerField(max_value =  200 ,label = "" ,required = False , initial = 23 , widget=forms.TextInput(attrs={'class':'intform' , 'id':'intform'}))
+	percentage = forms.IntegerField(max_value = 100 , required = False , label = "",initial =100 , widget=forms.TextInput(attrs={'class':'intform' ,'id':'intform'}))
+	grade = forms.CharField(max_length = 1 , required = False , label = "" ,initial = "A",widget=forms.TextInput(attrs={'class':'grade','id':'grade'}))
 
 
 	def __init__(self , report = None , *args , **kwargs):

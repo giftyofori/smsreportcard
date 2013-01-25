@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from phonenumber_field.modelfields import PhoneNumberField
+from tweak import subjectstuple
 
 class Student(models.Model):
 	first_name = models.CharField(max_length = 50 )
@@ -128,21 +129,10 @@ class Report(models.Model):
 	class Meta:
 		db_table = "report"
 	
-def cal():
-	core = Core_subjects.objects.all()
-	dict1 = {}
-	for i in range(4):
-		dict1[str(core[i])] = str(core[i])
-	return dict1
-	
-def cal1():
-	core = Core_subjects.objects.all()
-	tuple = ((str(core[1]) ,str(core[1])),(str(core[2]) ,str(core[2])),)
-	return tuple
 
 class Report_content(models.Model):
 	report = models.ForeignKey(Report , null = True)
-	subject = models.CharField(max_length = 50 , choices = cal1(), default = "English")
+	subject = models.CharField(max_length = 50 , choices = subjectstuple(), default = "English")
 	exam_mark = models.IntegerField("Examination Mark", max_length = 3)
 	test_mark = models.IntegerField("Class Test Mark" , max_length = 3)
 	percentage = models.IntegerField(max_length = 3)
