@@ -1,7 +1,7 @@
 body{
 background-color:#9999A9;
 margin-left:3cm;
-margin-right:10px;
+margin-right:;
 
 }
 
@@ -89,4 +89,19 @@ background-color:pink;
 !important;
 height:20px;
 background-color:pink;
+}
+.report{
+padding-top:50px;
+padding-bottom:50px;
+padding-right:25px;
+padding-left:75px;
+font-size:20px;
+}
+.reptable{
+height:30px;
+width:1000px;
+padding-top:5cm;
+padding-bottom:5cm;
+padding-right:none;
+padding-left:none;
 }

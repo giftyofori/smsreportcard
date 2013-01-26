@@ -1,42 +1,57 @@
-{% for i in reports %}
-{{i.student_name}}
-</br>
-{{i.course}}
-</br>
-{{i.phone}}
-</br>
-{%endfor%}
-{% for i in subjects %}
-{{i.subject}}
-{{i.grade}}
-{% endfor %}
+{% extends "_reportcard/base.html"%}
 
+{% block main %}
+
+
+<hr>
+<div class ="report">
 {% for i in reports %}
+
+<p>Student Name : {{i.student_name}} </p>
 <table width="200" border="1">
+<hr>
+<p> Course : {{i.course }} </p>
+{% ifequal 1 i.form %}
+ <p> SHS Level : One  &nbsp;</p>
+{% endifequal%}
+{% ifequal 2 i.form %}
+ <p> SHS Level : Two  &nbsp;</p>
+{% endifequal%}
+{% ifequal 3 i.form %}
+ <p> SHS Level : Three &nbsp;</p>
+{% endifequal%}
+{{endif}}
 
-  <tr>
-    <td> {{i.student_name}}&nbsp;</td>
-  </tr>
-  <tr>
-    <td> {{i.course}} &nbsp;</td>
-  </tr>
-  <tr>
-    <td> {{i.form}} &nbsp;</td>
-  </tr>
-  <tr>
-    <td> {{i.teacher}} &nbsp;</td>
-  </tr>
-  <tr>
-    <td> {{i.remark}} &nbsp;</td>
-  </tr>
+<p> Report Created By  {{i.teacher}} <p>
+
 </table>
 {% endfor %}
+<hr>
+<br>
+<br>
 {% for i in subjects %}
-<table width="200" border="1">
-  <tr>
-    <td> {{i.subject}} &nbsp;</td>
-    <td>{{i.grade}} &nbsp;</td>
-  </tr>
- </table>
-  
-  {% endfor %}
+<div>
+	<table class = "reptable" border="1">
+  		<tr>
+    		<td> {{i.subject}} &nbsp;</td>
+    
+			<td>{{i.exam_mark}}</td>
+			<td>{{i.test_mark}}</td>
+			<td> {{i.percentage}} </td>
+			<td>{{i.grade}} &nbsp;</td>
+  		</tr>
+
+ 	</table>
+ </div>
+{% endfor %}
+
+<!-- Remarks -->
+{%for i in reports%}
+<br>
+<hr>
+<br>
+<p> Remark {{i.remark}} </p>
+{%endfor%}
+</div>
+<hr>
+{% endblock %}
