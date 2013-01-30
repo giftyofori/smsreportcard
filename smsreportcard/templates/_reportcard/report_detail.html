@@ -9,7 +9,10 @@
 
 <p>Student Name : {{i.student_name}} </p>
 <table width="200" border="1">
-<hr>
+<div class = "line">
+	<hr>
+
+</div>
 <p> Course : {{i.course }} </p>
 {% ifequal 1 i.form %}
  <p> SHS Level : One  &nbsp;</p>
@@ -26,8 +29,12 @@
 
 </table>
 {% endfor %}
-<hr>
+<div class = "line">
+	<hr>
+
+</div>
 <br>
+<tr><th></th><td><span style ="margin-left:60px">Subject<span style ="margin-left:85px"></td><td><span>Examination Marks<span></td><td><span style ="margin-left:85px">Class Test Marks</span></td><td><span style ="margin-left:70px">Percentag(%)</span></td><td><span style ="margin-left:85px">Grade</td></tr><br>
 <br>
 {% for i in subjects %}
 <div>
@@ -37,7 +44,7 @@
     
 			<td>{{i.exam_mark}}</td>
 			<td>{{i.test_mark}}</td>
-			<td> {{i.percentage}} </td>
+			<td> {{i.percentage}}% </td>
 			<td>{{i.grade}} &nbsp;</td>
   		</tr>
 
@@ -48,9 +55,14 @@
 <!-- Remarks -->
 {%for i in reports%}
 <br>
-<hr>
+<div class = "line">
+	<hr>
+
+</div>
 <br>
-<p> Remark {{i.remark}} </p>
+<div class = "line">
+	<p> Remark {{i.remark}} </p>
+</div>
 {%endfor%}
 </div>
 <hr>

@@ -1,7 +1,7 @@
 body{
 background-color:#9999A9;
 margin-left:3cm;
-margin-right:;
+margin-right:2.5cm;
 
 }
 
@@ -95,7 +95,7 @@ padding-top:50px;
 padding-bottom:50px;
 padding-right:25px;
 padding-left:75px;
-font-size:20px;
+font-size:13px;
 }
 .reptable{
 height:30px;
@@ -104,4 +104,10 @@ padding-top:5cm;
 padding-bottom:5cm;
 padding-right:none;
 padding-left:none;
+}
+/*
+Style for lines
+*/
+.line{
+margin-right:1.2cm;
 }
