@@ -2,9 +2,12 @@ from django.shortcuts import render_to_response
 from django.forms.formsets import formset_factory
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse , HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from forms import *
 from models import *
+import datetime
 
+@login_required
 def report_detail(request , pk):
 	report = Report.objects.filter(id = pk)
 	report_content = Report_content.objects.filter(report = pk)
@@ -22,16 +25,18 @@ def display_forms(request):
 
 	return render_to_response('_reportcard/add_report.html' ,dict(rform = reportform , rcform = report_contentforms , remark = remark ,formset = formset) )
 
-
+@login_required
 def all_reports(request):
 	reports = Report.objects.all()
 	return HttpResponse(reports)
 
+@login_required
 @csrf_exempt
 def add_report(request):
 	if request.method == 'GET':
 		reportform = ReportForm()
 		report_contentforms = []
+		time = datetime.datetime.now()		
 		for i in range(8):
 			report_contentforms.append(Report_contentForm(prefix = 'f%s'%i))
 	if request.method == 'POST':
@@ -49,7 +54,7 @@ def add_report(request):
 					form.save()
 			
 			return HttpResponseRedirect(report.get_absolute_url())
-	return render_to_response('_reportcard/add_report.html' , dict(rform = reportform , rcform = report_contentforms ))
+	return render_to_response('_reportcard/add_report.html' , dict(rform = reportform , rcform = report_contentforms , time = time))
 			
 		
 		

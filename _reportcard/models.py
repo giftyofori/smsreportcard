@@ -114,6 +114,7 @@ class Elective_subjects(models.Model):
 
 class Report(models.Model):
 	FORMS = ((1,"One") ,(2,"Two") , (3 , "Three"))
+	date_created = models.DateTimeField(auto_now = True)
 	student_name = models.CharField(max_length = 100)
 	course = models.CharField(max_length = 50)
 	form = models.IntegerField(max_length = 2, choices = FORMS)
@@ -155,7 +156,7 @@ class ReportcontentInline(admin.TabularInline):
 	extra = 8		
 class ReportAdmin(admin.ModelAdmin):
 	inlines = [ReportcontentInline]
-	list_display = ['student_name' , 'course' , 'teacher']
+	list_display = ['student_name' , 'course' , 'teacher' , 'date_created']
 
 class ESInline(admin.TabularInline):
 	model = Elective_subjects

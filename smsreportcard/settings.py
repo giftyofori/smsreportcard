@@ -18,7 +18,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': 
-        dj_database_url.config(default="sqlite:/SMSrc_dev.db")
+        dj_database_url.config(default="sqlite:/SMSrc_dev2.db")
         
 }
 
