@@ -18,5 +18,8 @@ urlpatterns = patterns('',
 	url(r'^sms/', include(dj_simple_sms.urls)),
 	url(r'^report/' ,include('_reportcard.urls')),
 	url(r'^detail/(\d+)/$' , '_reportcard.views.report_detail'),
+	url(r'^accounts/profile/' , 'reg.views.main'),
+	url(r'^home/' , 'reg.views.main'),
+	url(r'^kab234/' , '_reportcard.views.main')
 	
 )

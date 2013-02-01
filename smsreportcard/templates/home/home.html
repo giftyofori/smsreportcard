@@ -81,7 +81,7 @@
             {% block nav-global %}
 
                 <!-- MENU -->
-                <h3 style="color:#FF6633"><a href="{% url reg.views.main %}">Compssa Forum</a></h3>
+                <h3 style="color:#FF6633"><a href="{% url reg.views.main %}">Smart Report</a></h3>
 
                 {% if user.is_staff %} <a href="{% url admin:index %}">Admin</a> {% endif %}
                 {% if user.is_authenticated %}
@@ -90,7 +90,7 @@
                 {% if not user.is_authenticated %}<a href="/accounts/login/?next=/home">login</a> | <a
                     href="/accounts/register/">register</a>{% endif %}
 
-                {% if user.is_authenticated %}<a href="/accounts/logout/?next=/home">logout</a>
+                {% if user.is_authenticated %}<a href="/accounts/logout/?next=/home">logout working</a>
                     {% endif %}
 
             {% endblock %}

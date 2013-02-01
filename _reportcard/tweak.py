@@ -24,15 +24,19 @@ def subjectdict():
 """
 Get all subjects in the  system and make a tuple out of them
 """
-
+'''
 def subjectstuple():
 	core = Core_subjects.objects.all()
 	tuple = ((str(core[1]) ,str(core[1])),(str(core[2]) ,str(core[2])),)
 	return tuple
 
+'''
 def subjectstuple():
-	core = Core_subjects.objects.all()
-	matuple = ()
-	for i in range(len(core)):
-		matuple = matuple + ((str(core[i]),str(core[i])),)
-	return matuple
+	try:
+		core = Core_subjects.objects.all()
+		matuple = ()
+		for i in range(len(core)):
+			matuple = matuple + ((str(core[i]),str(core[i])),)
+		return matuple
+	except:
+		return "No subject in system"

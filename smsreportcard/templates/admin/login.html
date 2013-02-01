@@ -26,9 +26,11 @@
 </p>
 {% endfor %}
 {% endif %}
-
+<div class = "form-signin">
+For System Managers Only <p> Login as User <a href ="/accounts/login" >HERE</a><p>
+</div>
 <div id="content-main">
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+<form  action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
   <div class="form-row">
     {% if not form.this_is_the_login_form.errors %}{{ form.username.errors }}{% endif %}
     <label for="id_username" class="required">{% trans 'Username:' %}</label> {{ form.username }}

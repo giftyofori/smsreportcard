@@ -7,6 +7,15 @@ from forms import *
 from models import *
 import datetime
 
+
+"""
+DISPLAY THE MAIN PAGE
+"""
+def main(request):
+	return render_to_response('home/main.html',{})
+
+
+
 @login_required
 def report_detail(request , pk):
 	report = Report.objects.filter(id = pk)
