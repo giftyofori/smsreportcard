@@ -12,7 +12,7 @@ import datetime
 DISPLAY THE MAIN PAGE
 """
 def main(request):
-	return render_to_response('home/main.html',{})
+	return render_to_response('home/main.html',dict(user=request.user))
 
 
 
