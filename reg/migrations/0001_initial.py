@@ -17,10 +17,19 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('reg', ['UserProfile'])
 
+        # Adding model 'LoggedUser'
+        db.create_table('reg_loggeduser', (
+            ('username', self.gf('django.db.models.fields.CharField')(max_length=30, primary_key=True)),
+        ))
+        db.send_create_signal('reg', ['LoggedUser'])
+
 
     def backwards(self, orm):
         # Deleting model 'UserProfile'
         db.delete_table('reg_userprofile')
+
+        # Deleting model 'LoggedUser'
+        db.delete_table('reg_loggeduser')
 
 
     models = {
@@ -59,6 +68,10 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        'reg.loggeduser': {
+            'Meta': {'object_name': 'LoggedUser'},
+            'username': ('django.db.models.fields.CharField', [], {'max_length': '30', 'primary_key': 'True'})
         },
         'reg.userprofile': {
             'Meta': {'object_name': 'UserProfile'},

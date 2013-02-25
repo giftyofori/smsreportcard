@@ -22,7 +22,7 @@ class Migration(SchemaMigration):
         db.create_table('dj_simple_sms_device', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=64)),
-            ('key', self.gf('django.db.models.fields.CharField')(default='09f721d23ab24e8ab6c6cdc4eb1a4f2a', max_length=32, db_index=True)),
+            ('key', self.gf('django.db.models.fields.CharField')(default='8a49487eaeb54ed782cbb193eb0ece93', max_length=32, db_index=True)),
         ))
         db.send_create_signal('dj_simple_sms', ['Device'])
 
@@ -39,7 +39,7 @@ class Migration(SchemaMigration):
         'dj_simple_sms.device': {
             'Meta': {'object_name': 'Device'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'key': ('django.db.models.fields.CharField', [], {'default': "'1c2eeea2860d451096d2d552f2519144'", 'max_length': '32', 'db_index': 'True'}),
+            'key': ('django.db.models.fields.CharField', [], {'default': "'e7a2140fa3ab4a11804ee834bfeb1be2'", 'max_length': '32', 'db_index': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
         },
         'dj_simple_sms.sms': {

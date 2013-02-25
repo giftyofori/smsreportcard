@@ -1,4 +1,4 @@
-# Django settings for verifyProject project.
+# Django settings for SmartReport project.
 import south
 import os
 import dj_database_url
@@ -7,6 +7,7 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+ADMIN_MEDIA_PREFIX = '/static/grappelli2/grappelli/'
 
 ADMINS = (
     ('admin', 'admin@example.com'),
@@ -18,12 +19,24 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': 
-        dj_database_url.config(default="sqlite:/SMSrc_dev2.db")
+        dj_database_url.config(default="sqlite:/smartreport.db")
         
 }
 
 
 
+# Email Settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kwawannor'
+EMAIL_HOST_PASSWORD = 'fuckhimto'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'kwawannor@gmail.com'
+SERVER_EMAIL = 'kwaw@gmail.com'
+EMAIL_SUBJECT_PREFIX ="[SHS Report System]"
+
+#
+ACCOUNT_ACTIVATION_DAYS = 2
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -65,7 +78,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'static/'
+STATIC_ROOT = '/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -125,8 +138,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     'django.contrib.messages.context_processors.messages',
 )
-GRAPPELLI_INDEX_DASHBOARD = 'compassa_reg.dashboard.CustomIndexDashboard'
+
 INSTALLED_APPS = (
+    'reportcard',
+    
+    'msgs',
+    'dj_simple_sms',
+    'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -136,12 +154,12 @@ INSTALLED_APPS = (
 	'django.contrib.markup',
     
     'django.contrib.admin',
-    #'south',
+    'south',
 	'registration', 
 	'reg',
 	'simple_report',
 	'dj_simple_sms',
-        '_reportcard',
+	'msgs',
 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -181,3 +199,4 @@ LOGGING = {
         },
     }
 }
+GRAPPELLI_ADMIN_TITLE ="Smart Report v01"

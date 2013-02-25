@@ -1,19 +1,13 @@
-body{
-background-color:#9999A9;
-margin-left:3cm;
-margin-right:2.5cm;
-
-}
 
 #span{
 padding-top:;
 padding-bottom:15px;
 padding-right:25px;
-padding-left:;
+padding-left:none;
 }
 .p{
 margin-left:15cm;
-margin-right:;
+margin-right:none;
 
 }
 .padding
@@ -21,14 +15,14 @@ margin-right:;
 padding-top:15px;
 padding-bottom:15px;
 padding-right:25px;
-padding-left:;
+padding-left:none;
 }
 .remarkstyle{
 font-family:Arial,sans-serif;
 font-variant: small-caps;
 }
 #id_student_name{
-background-color:;
+background-color:none;
 width:10cm;
 height:20px;
 }
@@ -50,8 +44,8 @@ height:20px;
 }
 #id_f0-subject{
 !important;
-height:20pxpx;
-background-color:;
+height:20px;
+background-color:none;
 
 
 }
@@ -111,3 +105,12 @@ Style for lines
 .line{
 margin-right:1.2cm;
 }
+
+/*
+table {
+  
+  border-spacing:10cm !important;
+  border-collapse:collapse;
+}
+*/
+

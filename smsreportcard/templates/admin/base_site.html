@@ -1,23 +1,11 @@
 {% extends "admin/base.html" %}
-{% load i18n %}
+{% load i18n grp_tags %}
 
-{% block title %}{{ title }} | {% trans 'SHS Report Card admin' %}{% endblock %}
-{% block extrastyle %}
-<style>
-#header{ background-color:#333940; border-bottom: solid 3px # 999;}
-
-
-#branding h1{color:orange;}
-.module h2, .module caption, .inline-group h2 {background:#ccc url(/admin_media/img/admin/nav-bg.gif) bottom left repeat-x;} color: #333940; }}
-a.section:link, a.section:vistied {color#666666; }
-</style>
-{% endblock %}
-{% block extrahead %}
-{% endblock %}
+{% block title %}{{ title }} | {% trans 'Smart Report site admin' %}{% endblock %}
 
 {% block branding %}
+    <h1 id="site-name">{% trans 'Smart Report Administration' %}</h1>
 
-<h1 id="site-name" style="">{% trans 'SHS Report Card' %}</h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

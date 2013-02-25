@@ -1,17 +1,11 @@
-{% load i18n admin_static %}
+{% load i18n grp_tags %}
 {% if cl.search_fields %}
-<div id="toolbar"><form id="changelist-search" action="" method="get">
-<div><!-- DIV needed for valid HTML -->
-<label for="searchbar"><img src="{% static "admin/img/icon_searchbox.png" %}" alt="Search" /></label>
-<input type="text" style = "width:450px; margin-left:300px;height:27px"name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" />
-<input type="submit" value="{% trans 'Search' %}" />
-{% if show_result_count %}
-    <span class="small quiet">{% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %} (<a href="?{% if cl.is_popup %}pop=1{% endif %}">{% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a>)</span>
-{% endif %}
-{% for pair in cl.params.items %}
-    {% ifnotequal pair.0 search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}
-{% endfor %}
-</div>
-</form></div>
-<script type="text/javascript">document.getElementById("searchbar").focus();</script>
+    <!-- Search Form -->
+    <form id="grp-changelist-search" action="" method="get">
+        <input type="text" name="{{ search_var }}" id="grp-changelist-search" class="grp-search-field" value="{{ cl.query }}" />
+        <button type="submit" value="" class="grp-search-button"></button>
+        {% for pair in cl.params.items %}
+            {% ifnotequal pair.0 search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}
+        {% endfor %}
+    </form>
 {% endif %}
