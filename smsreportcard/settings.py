@@ -27,11 +27,11 @@ DATABASES = {
 
 # Email Settings
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kwawannor'
-EMAIL_HOST_PASSWORD = 'fuckhimto'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'kwawannor@gmail.com'
+DEFAULT_FROM_EMAIL = ''
 SERVER_EMAIL = 'kwaw@gmail.com'
 EMAIL_SUBJECT_PREFIX ="[SHS Report System]"
 
